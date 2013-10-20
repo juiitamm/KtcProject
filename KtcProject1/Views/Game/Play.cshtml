@@ -6,10 +6,14 @@
 
 <h2>Round @Model.Round</h2>
 
+<div>
 @foreach (var p in Model.Players)
 {
-    <p>
-        @p.Name.ToString()
-    </p>
+    <div>
+        <p>@p.Name.ToString()</p>
+        <p>Fumbles: @p.Fumbles</p>
+        <p>Chimneys: @p.Chimneys</p>
+    </div>
 }
+</div>
 
