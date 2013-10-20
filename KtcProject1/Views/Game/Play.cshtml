@@ -5,3 +5,11 @@
 }
 
 <h2>Round @Model.Round</h2>
+
+@foreach (var p in Model.Players)
+{
+    <p>
+        @p.Name.ToString()
+    </p>
+}
+
