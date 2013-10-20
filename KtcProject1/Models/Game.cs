@@ -17,8 +17,9 @@ namespace KtcProject1.Models
         public List<Player> Players { get; set; }
 
         public Game()
+            :this(MIN_PLAYERS)
         {
-            AddPlayers(MIN_PLAYERS);
+
         }
 
         public Game(int playerCount)
@@ -26,6 +27,7 @@ namespace KtcProject1.Models
             if (playerCount < 2) throw new Exception("Cannot be less than two players in a game");
 
             AddPlayers(playerCount);
+            Round = 1;
         }
 
         private void AddPlayers(int playerCount)
