@@ -8,9 +8,25 @@
 
 @using (Html.BeginForm("Play", "Game", FormMethod.Post))
 {
-    @Html.EditorFor(x => x.Players)
-
+    <div id="playerContainer">
+        @Html.EditorFor(x => x.Players)
+    </div>
+    <p>
+        <input type = "button" value = "Add player" id="AddPlayerButton" />
+    </p>
+    
     <p>
         <input type = "submit" value="Start game!" />
     </p>
 }
+<script>
+$(function () {
+    $("#AddPlayerButton").click(function (e) {
+        var itemIndex = $("div.player").length;
+        e.preventDefault();
+        $.get("@Url.Action("AddPlayer", "Game")/" + itemIndex, function(data){
+            $("#playerContainer").append(data);
+        });
+    });
+});
+</script>

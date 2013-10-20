@@ -24,5 +24,12 @@ namespace KtcProject1.Controllers
             return View(game);
         }
 
+        //GET: /Game/AddPlayer/2
+        public ActionResult AddPlayer(int id)
+        {
+            ViewBag.PlayerIndex = id;
+            return View("Partial/NewPlayer");
+        }
+
     }
 }
