@@ -1,0 +1,16 @@
+﻿@model KtcProject1.Models.Game
+
+@{
+    ViewBag.Title = "New KTC";
+}
+
+<h2>New KTC</h2>
+
+@using (Html.BeginForm("Play", "Game", FormMethod.Post))
+{
+    @Html.EditorFor(x => x.Players)
+
+    <p>
+        <input type = "submit" value="Start game!" />
+    </p>
+}
