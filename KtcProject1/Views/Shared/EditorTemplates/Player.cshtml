@@ -2,9 +2,10 @@
 
 <div class="player">
     <div class="editor-label">
-        @Html.LabelFor(x => x.Name)
+        @Html.LabelFor(player => player.Name)
     </div>
     <div class="editor-field">
-        @Html.TextBoxFor(x => x.Name)
+        @Html.TextBoxFor(player => player.Name)
+        @Html.ValidationMessageFor(player => player.Name)
     </div>
 </div>
