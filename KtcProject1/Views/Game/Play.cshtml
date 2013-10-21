@@ -4,13 +4,15 @@
     ViewBag.Title = "Start";
 }
 
-<h2>Round @Model.Round</h2>
+<h2>Match @Model.Match</h2>
+
+<h3>Round @Model.Round</h3>
 
 <div>
 @foreach (var p in Model.Players)
 {
     <div>
-        <p>@p.Name.ToString()</p>
+        <h4>@p.Name.ToString()</h4>
         <p>Fumbles: @p.Fumbles</p>
         <p>Chimneys: @p.Chimneys</p>
     </div>
