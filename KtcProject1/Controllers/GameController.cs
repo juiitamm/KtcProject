@@ -19,15 +19,23 @@ namespace KtcProject1.Controllers
         }
 
         [HttpPost]
+        public ActionResult Index(Game game)
+        {
+            if(ModelState.IsValid)
+                return RedirectToAction("Play", game);
+            return View();
+        }
+
         public ActionResult Play(Game game)
         {
             return View(game);
         }
 
-        //GET: /Game/AddPlayer/2
+        //AJAX GET: /Game/AddPlayer/2
         public ActionResult AddPlayer(int id)
         {
             ViewBag.PlayerIndex = id;
+            ViewBag.PlayerNameError = Player.GetNameErrorMessage();
             return View("Partial/NewPlayer");
         }
 
