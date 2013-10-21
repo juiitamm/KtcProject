@@ -4,28 +4,50 @@
     ViewBag.Title = "New KTC";
 }
 
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")"></script>
+
 <h2>New KTC</h2>
 
 @using (Html.BeginForm("Play", "Game", FormMethod.Post))
 {
+    @Html.ValidationSummary(true);
     <div id="playerContainer">
         @Html.EditorFor(x => x.Players)
     </div>
     <p>
-        <input type = "button" value = "Add player" id="AddPlayerButton" />
+        <input type = "button" value = "Add player" id="add-player" />
     </p>
     
     <p>
         <input type = "submit" value="Start game!" />
     </p>
 }
+
 <script>
 $(function () {
-    $("#AddPlayerButton").click(function (e) {
+    $("#add-player").click(function (e) {
         var itemIndex = $("div.player").length;
         e.preventDefault();
+
         $.get("@Url.Action("AddPlayer", "Game")/" + itemIndex, function(data){
             $("#playerContainer").append(data);
+
+            //adding validation to new rows:
+            var $form = $("#playerContainer").closest("form");
+            $form.unbind();
+            $form.data("validator", null);
+            $.validator.unobtrusive.parse(document);
+
+            //remove button action:
+            $(".remove-player").click(function (e) {
+                //var itemIndex = $("div.player").length;
+                e.preventDefault();
+                $(e.target).closest("div.player").remove();
+                //var $div = 
+                //$("#playerContainer").remove($div);
+//                $button.closest("div.player").append( "<p>Test</p>" );
+            });
         });
     });
 });
