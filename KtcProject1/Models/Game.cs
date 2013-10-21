@@ -10,6 +10,9 @@ namespace KtcProject1.Models
     public class Game
     {
         private const int MIN_PLAYERS = 2;
+
+        [ScaffoldColumn(false)]
+        public int Match { get; set; }
         
         [ScaffoldColumn(false)]
         public int Round { get; set; }
@@ -28,6 +31,7 @@ namespace KtcProject1.Models
 
             AddPlayers(playerCount);
             Round = 1;
+            Match = 1;
         }
 
         private void AddPlayers(int playerCount)
