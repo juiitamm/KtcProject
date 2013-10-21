@@ -5,6 +5,9 @@
         <label for="Players_@(ViewBag.PlayerIndex)__Name">Player Name</label>
     </div>
     <div class="editor-field">
-        <input id="Players_@(ViewBag.PlayerIndex)__Name" name="Players[@(ViewBag.PlayerIndex)].Name" type="text" value="" />
+        <input data-val="true" data-val-required="@(ViewBag.PlayerNameError)" id="Players_@(ViewBag.PlayerIndex)__Name" name="Players[@(ViewBag.PlayerIndex)].Name" type="text" value="" />
+        <button class="remove-player">Remove player</button>
+        <span class="field-validation-valid" data-valmsg-for="Players[@(ViewBag.PlayerIndex)].Name" data-valmsg-replace="true"></span>
     </div>
-</div>
+</div>
+
