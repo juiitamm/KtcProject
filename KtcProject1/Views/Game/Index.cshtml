@@ -9,7 +9,7 @@
 
 <h2>New KTC</h2>
 
-@using (Html.BeginForm("Play", "Game", FormMethod.Post))
+@using (Html.BeginForm(FormMethod.Post))
 {
     @Html.ValidationSummary(true);
     <div id="playerContainer">
@@ -41,12 +41,8 @@ $(function () {
 
             //remove button action:
             $(".remove-player").click(function (e) {
-                //var itemIndex = $("div.player").length;
                 e.preventDefault();
                 $(e.target).closest("div.player").remove();
-                //var $div = 
-                //$("#playerContainer").remove($div);
-//                $button.closest("div.player").append( "<p>Test</p>" );
             });
         });
     });

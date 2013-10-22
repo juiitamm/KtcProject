@@ -11,24 +11,32 @@ namespace KtcProject1.Controllers
     {
         //
         // GET: /Game/
-
         public ActionResult Index()
         {
-            Game game = new Game();
-            return View(game);
+            return View(new Game());
         }
 
+        //POST: /Game/
         [HttpPost]
         public ActionResult Index(Game game)
         {
-            if(ModelState.IsValid)
-                return RedirectToAction("Play", game);
-            return View();
+            if (ModelState.IsValid)
+            {
+                //Using TempData to pass the game to Play-method:
+                TempData["gameData"] = game;
+                return RedirectToAction("Play");
+            }
+            return View(game);
         }
 
-        public ActionResult Play(Game game)
+        //GET: /Game/Play
+        public ActionResult Play()
         {
-            return View(game);
+            Game game = TempData["gameData"] as Game;
+            if (game == null)
+                return RedirectToAction("Index");
+            return View("Play", game);
+
         }
 
         //AJAX GET: /Game/AddPlayer/2
