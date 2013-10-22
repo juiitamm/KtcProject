@@ -9,10 +9,10 @@ namespace KtcProject1.Models
 {
     public class Player
     {
-        private const string NameRequiredError = "A name is required!";
+        private const string nameRequiredError = "A name is required!";
 
         [DisplayName("Player Name")]
-        [Required(ErrorMessage = NameRequiredError)]
+        [Required(ErrorMessage = nameRequiredError)]
         public string Name { get; set; }
 
         [ScaffoldColumn(false)]
@@ -30,7 +30,7 @@ namespace KtcProject1.Models
 
         public static string GetNameErrorMessage()
         {
-            return NameRequiredError;
+            return nameRequiredError;
         }
     }
 }
