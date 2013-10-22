@@ -35,6 +35,7 @@ namespace KtcProject1
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+            ModelBinders.Binders.Add(typeof(List<Models.Player>), new Binders.ListModelBinder<Models.Player>());
         }
     }
 }
